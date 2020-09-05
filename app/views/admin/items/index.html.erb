@@ -1,0 +1,22 @@
+<%= render 'layouts/amin_header' %>
+<%= link_to "商品新規登録", new_admin_item_path, class: "btn btn-warning"%>
+<h1>商品一覧</h1>
+
+<table class="table">
+	<tr>
+		<th>商品id</th>
+		<th>商品名</th>
+		<th>税抜き価格</th>
+		<th>ジャンル</th>
+		<th>ステータス</th>
+	</tr>
+	<tr>
+		<% @items.each do |i|%>
+			<td><%= i.id %></td>
+			<td><%= link_to i.name, admin_item_path(i.id) %></td>
+			<td><%= i.price %></td>
+			<td><%= i.genre.name %></td>
+			<td><%= i.is_active %></td>
+	</tr>
+		<% end %>
+</table>

@@ -1,0 +1,48 @@
+<div class="container cart_items">
+	
+<%= render 'layouts/customer_header' %>
+<h1>ショッピングカート</h1>
+<table class="table">
+	<tr>
+		<th>商品名</th>
+		<th>単価</th>
+		<th>数量</th>
+		<th>小計</th>
+		<th></th>
+	</tr>
+	<tr>
+		<!-- @sumに０を代入 -->
+		<!-- @cartsにはCurtItemモデルの全てを代入してある -->
+		<!-- カート内の商品名を表示 -->
+		<!-- カート内の商品の値段を表示 -->
+		<!-- @totalにpriceをamountの乗算を代入 -->
+		<!-- @totalを表示 -->
+		<!-- カート内の商品の値段と個数を乗算した小計を表示 -->
+		<!-- @sumに@totalの値を加算 -->
+		<!-- @sumにtotalpeiceが繰り返し処理される -->
+		<% @sum = 0%>
+		<% @carts.each do |cart|%>
+			<td><%= cart.item.name%></td>
+			<td><%= cart.item.price%></td>
+			<%= form_for(cart, url: public_cart_item_path(cart.id)) do |f|%>
+				<td><%= f.number_field :amount, value: cart.amount, min:1, max:99 %><%= f.submit "更新", class: "btn btn-info"%></td>
+			<% end %>
+			<% @total = cart.item.price * cart.amount%>
+			<td><%= @total %></td>
+			<% @sum += @total %>
+			<td><%= link_to "Destroy", public_cart_item_path(cart.id), method: :delete , class: "btn btn-default"%></td>
+	</tr>
+		<% end %>
+</table>
+	<div class="total">
+		<p>合計金額 <%= @sum %> 円</p>
+	</div>
+	<div class="cart_item_link">
+		<%= link_to '買い物を続ける', root_path, class: "btn btn-info" %>
+		<!-- Cart_Itemモデルのidが確認できたら下記のリンクを表示 -->
+	<% unless @carts.ids.empty? %>
+		<%= link_to '情報入力に進む', new_public_order_path , class: "btn btn-warning"%>
+		<%= link_to 'カートを空にする', destroy_all_public_cart_items_path, method: :delete, class: "btn btn-default" %>
+	<% end %>
+	</div>
+</div>

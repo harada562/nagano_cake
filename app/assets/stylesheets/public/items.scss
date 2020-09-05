@@ -1,0 +1,109 @@
+// Place all the styles related to the public/items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    /* padding-left: 15px; */
+    /* padding-right: 15px; */
+}
+
+div{
+	padding:0;
+}
+.top_p{
+	font-size: 20px;
+	margin-top: 20px;
+	display: block;
+	text-align: center;
+}
+
+.top_p p{
+	text-align: left;
+	display: inline-block;
+}
+
+.item1{
+	margin:0 auto;
+}
+
+main{
+	margin-top: 40px;
+}
+
+.item_table {
+	margin-top: 40px;
+	width: 300px;
+	height: 200px;
+}
+
+.item_td {
+	vertical-align:middle; 
+	width: 300px
+}
+
+.item_td img{
+	width: 150px;
+}
+
+.items_index_h1{
+	text-align: center;
+}
+.item_table {
+    margin-top: 40px;
+    /* width: 200px; */
+    height: 200px;
+}
+
+
+.public_item_show h1{
+	text-align: center;
+}
+
+.public_item_show img{
+	display: flex;
+	width: 300px;
+	height: 200px;
+}
+
+.public_item_show_box{
+	display: flex;
+}
+
+.public_item_show_box table{
+	margin-left: 30px;
+	font-size: 25px;
+}
+
+.item_action{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.item_show_number{
+	display: flex;
+	margin-right: 40px;
+}
+
+.item_show_number p{
+	display: flex;
+	align-items: flex-end;
+	font-size: 30px;
+	margin:0;
+	margin-left:20px;
+}
+
+.item_show_number .form-control{
+	padding:25px;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.submit {
+	margin-top:20px;
+}
+
+.submit .btn{
+	font-size: 25px;
+}
+

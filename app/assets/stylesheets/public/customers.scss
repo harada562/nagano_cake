@@ -1,0 +1,61 @@
+// Place all the styles related to the Public/Customers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.customer_show_h1{
+	margin: 40px;
+	font-size: 40px;
+}
+
+.customer_show_table{
+	font-size: 20px;
+	width: 800px;
+	height: 300px;
+}
+.customer_show_tr{
+	border: 30px;
+}
+
+.customer_show_link{
+	margin-top: 40px;
+}
+
+.customer_show_link .btn{
+	margin-right: 30px;
+	font-size: 30px;
+}
+
+.customer_edit_withdrawal{
+	margin-top: 30px;
+}
+
+.customer_confirm h1{
+	margin-top: 40px;
+	text-align: center;
+	font-size: 40px;
+}
+
+.customer_confirm{
+	text-align: center;
+}
+
+.customer_confirm p{
+	margin-top: 40px;
+	text-align: left;
+	display: inline-block;
+	font-size: 25px;
+	line-height: 2;
+}
+
+.customer_confirm .btn-primary{
+	margin-right: 40px;
+}
+
+.customer_confirm_link{
+	margin-top: 20px;
+	font-size: 60px;
+}
+
+.customer_confirm_link .btn{
+	font-size: 30px;
+}
+

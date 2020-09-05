@@ -1,0 +1,36 @@
+<%= render 'layouts/amin_header' %>
+<h1><%= @customer.first_name%><%= @customer.last_name%>さんの会員詳細</h1>
+<table class="table">
+	<tr>
+		<th>顧客ID</th>
+		<td><%= @customer.id %>
+			<% if @customer.is_deleted == true %>
+				退会済み
+			<% else %>
+				有効会員
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<th>氏名</th>
+		<td><%= @customer.first_name%><%= @customer.last_name%></td>
+	</tr>
+	<tr>
+		<th>郵便番号</th>
+		<td><%= @customer.postal_code %></td>
+	</tr>
+	<tr>
+		<th>住所</th>
+		<td><%= @customer.address %></td>
+	</tr>
+	<tr>
+		<th>電話番号</th>
+		<td><%= @customer.telephone_number %></td>
+	</tr>
+	<tr>
+		<th>メールアドレス</th>
+		<td><%= @customer.email %></td>
+	</tr>
+</table>
+<%= link_to '編集する',edit_admin_customer_path(@customer.id) , class: "btn btn-success"%>
+<%= link_to '注文履歴一覧を見る',admin_orders_path(@customer.id), class: "btn btn-info" %>

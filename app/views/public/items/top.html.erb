@@ -1,0 +1,92 @@
+<div class="container">
+	<div class="row">
+		<%= render 'layouts/customer_header' %>
+	</div>
+	<div class="row top_p" >
+		<p>ようこそ、NaganoCakeへ!<br>
+			このサイトは、ケーキ販売のECサイトになります。<br>
+			会員でない方も商品の閲覧はできますが、
+			購入には会員登録が必要になります。</p>
+	</div>
+	<div class="row main">
+		<h1>オススメ商品</h1>
+		<div class="col-lg-4 item1">
+			<table>
+				<tr>
+					<td><%= attachment_image_tag @item1, :image, :fill, 60, 60, fallback: "", size:'100x100'%></td>
+				</tr>
+				<tr>
+					<th>商品名</th>
+					<% if customer_signed_in? %>
+						<td><%= link_to @item1.name,  public_item_path(@item1.id)%></td>
+					<% else %>
+						<td><%= @item1.name %></td>
+					<% end %>
+				</tr>
+				<tr>
+					<th>税抜き価格</th>
+						<td><%= @item1.price %></td>
+				</tr>
+				<tr>
+					<th>ジャンル</th>
+					<td><%= @item1.genre.name %></td>
+				</tr>
+			</table>
+			
+			<%= link_to "商品詳細", public_item_path(@item1.id), class: "btn btn-warning active"%>
+
+		</div>
+		<div class="col-lg-4">
+			<table>
+				<tr>
+					<td><%= attachment_image_tag @item2, :image, :fill, 60, 60, fallback: "", size:'100x100'%></td>
+				</tr>
+				<tr>
+					<th>商品名</th>
+					<% if customer_signed_in? %>
+						<td><%= link_to @item2.name,  public_item_path(@item2.id)%></td>
+					<% else %>
+						<td><%= @item2.name %></td>
+					<% end %>
+				</tr>
+				<tr>
+					<th>税抜き価格</th>
+						<td><%= @item2.price %></td>
+				</tr>
+				<tr>
+					<th>ジャンル</th>
+					<td><%= @item2.genre.name %></td>
+				</tr>
+			</table>
+			
+			<%= link_to "商品詳細", public_item_path(@item2.id), class: "btn btn-warning active"%>
+		
+		</div>
+		<div class="col-lg-4">
+			<table>
+				<tr>
+					<td><%= attachment_image_tag @item3, :image, :fill, 60, 60, fallback: "", size:'100x100'%></td>
+				</tr>
+				<tr>
+					<th>商品名</th>
+					<% if customer_signed_in? %>
+						<td><%= link_to @item3.name,  public_item_path(@item3.id)%></td>
+					<% else %>
+						<td><%= @item3.name %></td>
+					<% end %>
+				</tr>
+				<tr>
+					<th>税抜き価格</th>
+						<td><%= @item3.price %></td>
+				</tr>
+				<tr>
+					<th>ジャンル</th>
+					<td><%= @item3.genre.name %></td>
+				</tr>
+			</table>
+			
+			<%= link_to "商品詳細", public_item_path(@item3.id), class: "btn btn-warning active"%>
+		
+		</div>
+	</div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container">
+	<%= render 'layouts/customer_header' %>
+	<h1>配送先登録/一覧</h1>
+	<%= form_for(@addresse, url:public_addresses_path, method: :post) do |f|%>
+	<div class="form-group">
+	<div>
+		<%= f.hidden_field :customer_id, :value => current_customer.id %>
+		<h2>郵便番号</h2>
+		<%= f.text_field :postal_code , class: "form-control"%>
+
+		<h2>住所</h2>
+		<%= f.text_field :address , class: "form-control"%>
+
+		<h2>宛名</h2>
+		<%= f.text_field :name , class: "form-control"%>
+	</div>
+</div>
+	<div>
+		<%= f.submit '配送先追加', class: "btn btn-warning" %>
+	</div>
+	<% end %>
+	<table class="table address_table_index">
+		<tr>
+			<th>郵便番号</th>
+			<th>住所</th>
+			<th>宛名</th>
+			<th></th>
+		</tr>
+		<% @addresses.each do |a| %>
+			<tr>
+			<% if a.customer.id == current_customer.id %>
+				<td><%=a.postal_code %></td>
+				<td><%=a.address %></td>
+				<td><%=a.name %></td>
+				<td><%= link_to '編集', edit_public_address_path(a.id) , class: "btn btn-default"%></td>
+			</tr>
+			<% end %>
+		<% end %>
+	</table>
+</div>

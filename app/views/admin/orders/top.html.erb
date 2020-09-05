@@ -1,0 +1,11 @@
+<%= render 'layouts/amin_header' %>
+<div class="order_admin_top">
+	
+<h1>管理者画面</h1>
+
+<h2>本日の注文件数</h2>
+<p><strong>
+<%= Order.where("DATE(created_at) = '#{Date.today}'").count%>件
+</strong>
+</p>
+</div>

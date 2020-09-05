@@ -1,0 +1,21 @@
+// Place all the styles related to the Public/Cart_Items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.cart_items h1{
+	margin-bottom: 30px;
+}
+
+.cart_items .table .btn-info{
+	margin-left: 30px;
+}
+
+.total{
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+
+}
+.cart_item_link{
+	margin-top: 40px;
+}
+

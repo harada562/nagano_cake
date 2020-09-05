@@ -1,0 +1,19 @@
+<%= render 'layouts/amin_header' %>
+<h1>ジャンル編集</h1>
+
+<%= form_for(@genre, url: admin_genre_path) do |f| %>
+	<h2>ジャンル</h2>
+	<%= f.text_field :name%>
+	<h2>販売ステータス</h2>
+	<div class="is_active customer_edit_radio">
+	<h3>有効</h3>
+	 <%= f.radio_button :is_active, [false] %>
+	 <h3>無効</h3>
+	 <%= f.radio_button :is_active, [true] %>
+	</div>
+
+	<%= f.submit "変更を保存する" , class: "btn btn-info genres_index"%>
+
+
+
+<% end %>

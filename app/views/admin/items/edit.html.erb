@@ -1,0 +1,20 @@
+<%= render 'layouts/amin_header' %>
+<h1>商品編集</h1>
+<%= attachment_image_tag @item, :image, :fill, 60, 60, fallback: "", size:'100x100'%>
+<%= form_for(@item, url: admin_item_path) do |f| %>
+
+	<%= f.attachment_field :image %>
+	<h2>商品名</h2>
+	<%= f.text_field :name%>
+	<h2>商品説明</h2>
+	<%= f.text_area :introduction %>
+	<h2>ジャンル</h2>
+	<%= f.collection_select :genre_id, Genre.all, :id, :name %>
+	<h2>税抜価格</h2>
+	<%= f.text_field :price%>
+	<h2>販売ステータス</h2>
+	 <%= f.select :is_active, [['販売停止中', '販売停止中'], ['販売中', '販売中']]%>
+	 <div class="admin_items_edit">
+		<%= f.submit "編集完了",  class: "btn btn-info"%>
+	 </div>
+<% end %>

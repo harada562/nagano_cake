@@ -1,0 +1,29 @@
+<%= render 'layouts/amin_header' %>
+<h1>会員一覧</h1>
+
+<table class="table">
+	<tr>
+		<th>会員ID</th>
+		<th>氏名</th>
+		<th>メールアドレス</th>
+		<th>ステータス</th>
+	</tr>
+		<% @customers.each do |c| %>
+	<tr>
+			<td><%= c.id%></td>
+			<!-- 名前すべてをlink_toにするためにブロックを使用する -->
+			<!-- linkに会員のidを持たせてadmin/showに移動 -->
+			<td><%= link_to admin_customer_path(c) do %>
+				<%= c.first_name%><%= c.last_name%></td>
+			<% end %>
+			<td><%= c.email%></td>
+			<td><% if c.is_deleted == true %>
+				退会済み
+				<% else %>
+				有効
+				<% end %>
+			</td>
+		<% end %>
+	</tr>
+
+</table>

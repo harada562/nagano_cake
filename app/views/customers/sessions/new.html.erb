@@ -1,0 +1,25 @@
+<div class="container">
+<h2>会員の方はこちらからログイン</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="form-group">
+  <div class="field">
+    <%= f.label :メールアドレス %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "form-control"%>
+  </div>
+</div>
+<div class="form-group">
+  <div class="field">
+    <%= f.label :パスワード %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="actions">
+    <%= f.submit "ログイン" , class: "btn btn-warning"%>
+  </div>
+</div>
+<% end %>
+<h3>登録がお済みでない方</h3>
+<p><%= link_to 'こちら', new_customer_registration_path, class: "btn btn-primary" %>から新規登録を行ってください</p>
+</div>

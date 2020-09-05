@@ -1,0 +1,52 @@
+<%= render 'layouts/amin_header' %>
+<h1>注文履歴詳細</h1>
+
+<table class="table">
+	<tr>
+		<th>購入者</th>
+		<td><%= @order.name%></td>
+	</tr>
+	<tr>
+		<th>配送先</th>
+		<td>
+			<%= @order.postal_code%><br>
+			<%= @order.address%><br>
+			<%= @order.name%>
+		</td>
+	</tr>
+	<tr>
+		<th>支払い方法</th>
+		<td><%= @order.payment_method%></td>
+	</tr>
+	<tr>
+		<th>注文ステータス</th>
+		<td><%= form_for(@order, url:admin_order_path(@order.id)) do |f| %>
+			<%= f.select :status, [['入金待ち', '入金待ち'], ['入金確認', '入金確認'], ['制作中', '制作中'], ['発送準備中', '発送準備中'], ['発送済み', '発送済み']]%><%= f.submit '更新', class: "table_in_submit btn btn-info"%>
+			<% end %>
+		</td>
+	</tr>
+</table>
+<table class="table">
+	<tr>
+		<th>商品名</th>
+		<th>単価</th>
+		<th>数量</th>
+		<th>小計</th>
+		<th>制作ステータス</th>
+	</tr>
+	<tr>
+		<% @order.order_details.each do |order_detail| %>
+			<td><%= order_detail.item.name%></td>
+			<td><%= order_detail.item.price%></td>
+			<td><%= order_detail.amount%>個</td>
+			<td><%= order_detail.price * order_detail.amount %>円</td>
+
+			<%= form_for(order_detail, url:admin_order_detail_path(order_detail.id)) do |f| %>
+			<td>
+					<%= f.select :make_status, [['制作不可', '制作不可'],['制作待ち','制作待ち'],['制作中', '制作中'],['制作完了', '制作完了']]%><%= f.submit '更新', class: "table_in_submit btn btn-info"%>
+			</td>
+			<% end %>
+
+	</tr>
+		<% end %>
+</table>

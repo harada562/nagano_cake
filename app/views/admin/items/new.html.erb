@@ -1,0 +1,36 @@
+<%= render 'layouts/amin_header' %>
+<h1>商品新規登録</h1>
+
+<!-- form_forで@item(空のモデル)にデータを入れていくこの記述をブロック変数fに代入している -->
+<%= form_for(@item, url: admin_items_path) do |f| %>
+<!-- attachment_fieldで画像をアップロード出来る(モデルにattachmentを記述してあることが条件) -->
+	<%= f.attachment_field :image %>
+	<h2>商品名</h2>
+	<%= f.text_field :name%>
+
+	<h2>商品説明</h2>
+	<%= f.text_area :introduction %>
+	<h2>ジャンル</h2>
+	<!-- collection_selectは紐づけしているFK(genre_id)を指定することでGenreモデルの中に入ることが出来る,
+	そして Genreモデルのデータをすべて取り出し,
+	vlue属性にgenresテーブルのidを入れ
+	text項目にgenresテーブルのジャンルのnameを表示することができる-->
+	<!-- Genre.allの後はすべてgenreモデルのデータのことを示している -->
+	<%= f.collection_select :genre_id, Genre.all, :id, :name %>
+	<h2>税抜価格</h2>
+	<%= f.text_field :price%>
+
+	<h2>販売ステータス</h2>
+	<!-- selectで販売停止中を選ぶとfalseがis_activeに入れられる -->
+	<!-- selectで販売中を選ぶとtrueがis_activeに入れられる -->
+	 <%= f.select :is_active, [['販売停止中', '販売停止中'], ['販売中', '販売中']]%>
+
+	 <!-- @item(空のモデルに)にform_forで入力されたデータが入れられて
+	 admin_items_pathのcreateアクションに送信される -->
+	<div class="admin_items_edit">
+		<%= f.submit "新規商品登録", class: "btn btn-info"%>
+	</div>
+
+
+
+<% end %>

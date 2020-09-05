@@ -1,0 +1,14 @@
+<div class="container customer_confirm">
+	<%= render 'layouts/customer_header' %>
+	<h1>本当に退会しますか？</h1>
+	<p>
+		退会すると、会員登録情報や<br>
+		これまでの購入履歴や閲覧できなくなります。<br>
+		退会する場合は「退会する」をクリックしてください。
+	</p>
+	<div class="customer_confirm_link">
+		<%= link_to "退会しない", root_path, class: "btn btn-primary"%>
+		<!-- リンク文字退会、これをクリックするpublic_customers_hide_pathに現在の使用者の情報をもたせて移動する、メソッドはputである-->
+		<%= link_to "退会する", public_customers_hide_path(current_customer), method: :put ,class: "btn btn-danger active"%>
+	</div>
+</div>

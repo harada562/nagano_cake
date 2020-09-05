@@ -1,0 +1,45 @@
+<div class="container public_item_show">
+<%= render 'layouts/customer_header' %>
+<h1>商品詳細</h1>
+<div class="public_item_show_box">
+<%= attachment_image_tag @item, :image, :fill, 60, 60, fallback: "", size:'100x100'%>
+
+<table class="table">
+	<tr>
+		<th>商品名</th>
+		<td><%= @item.name%></td>
+	</tr>
+
+	<tr>
+		<th>商品紹介</th>
+		<td><%= @item.introduction%></td>
+	</tr>
+
+	<tr>
+		<th>税込価格</th>
+		<td><%= @item.price%>円</td>
+	</tr>
+
+</table>
+</div>
+<% if customer_signed_in? %>
+	<div class="row item_action">
+		<div class="col-lg-3">
+			<div class="form-group">
+				<%= form_for(@items, url: public_cart_items_path, method: :post) do |f| %>
+				<!-- hidden_fieldは実際に画面に表示せずにデータを持たせる -->
+				<!-- item_idが保存したいカラム名,valueがitem_idにいれたいデータのこと -->
+				<%= f.hidden_field :item_id, :value => @item.id %>
+				<%= f.hidden_field :customer_id, :value => current_customer.id %>
+			<div class="item_show_number">
+				<%= f.number_field :amount, value: 1 ,min:1, max:99 , class: "form-control"%><p>個</p>
+			</div>
+				<div class="item_show_number submit">
+				<%= f.submit "カートに入れる",  class: "btn btn-warning active"%>
+				</div>
+			</div>
+		</div>
+	</div>
+				<% end %>
+				<% end %>
+</div>

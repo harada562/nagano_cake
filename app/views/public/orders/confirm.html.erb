@@ -1,0 +1,73 @@
+<%= render 'layouts/customer_header' %>
+<h1>確認画面</h1>
+
+<table class="table">
+	<tr>
+		<th>商品名</th>
+		<th>単価</th>
+		<th>数量</th>
+		<th>小計</th>
+		<th></th>
+	</tr>
+	<tr>
+	<% @sum = 0%>
+	<% current_customer.cart_items.each do |cart|%>
+		<td><%= cart.item.name%></td>
+		<td><%= cart.item.price%>円</td>
+		<td><%= cart.amount%>個</td>
+			<% @total = cart.item.price * cart.amount%>
+		<!-- 小計 -->
+		<td><%= @total %>円</td>
+	</tr>
+	<% end %>
+</table>
+<table class="table">
+	<tr>
+		<th>郵便便番号</th>
+		<td><%= @order.postal_code%></td>
+	</tr>
+	<tr>
+		<th>住所</th>
+		<td><%= @order.address%></td>
+	</tr>
+	<tr>
+		<th>宛名</th>
+		<td><%= @order.name%></td>
+	</tr>
+	<tr>
+		<th>配送料</th>
+		<td><%= @order.shipping_cost%>円</td>
+	</tr>
+	<tr>
+		<th>支払い金額</th>
+		<td><%= @order.total_payment%>円</td>
+	</tr>
+	<tr>
+		<th>支払い方法</th>
+		<td><%= @order.payment_method%></td>
+	</tr>
+</table>
+
+<!-- 購入 -->
+<div class="order_confirm">
+	<%= form_for(@order, url: public_orders_path, method: :post) do |f|%>
+		<%= f.hidden_field :name%>
+		<%= f.hidden_field :customer_id%>
+		<%= f.hidden_field :postal_code%>
+		<%= f.hidden_field :address%>
+		<%= f.hidden_field :shipping_cost%>
+		<%= f.hidden_field :total_payment%>
+		<%= f.hidden_field :status%>
+		<%= f.submit '購入', class: "btn btn-warning"%>
+	<% end %>
+	<!-- 戻り -->
+	<div class="order_confirm_return">
+		<%= form_for(@order, url: new_public_order_path(@customer)) do |f|%>
+			<%= f.hidden_field :customer_id%>
+			<%= f.hidden_field :shipping_cost%>
+			<%= f.hidden_field :total_payment%>
+			<%= f.hidden_field :status%>
+			<%= f.submit '戻る', class: "btn btn-info"%>
+	</div>
+	<% end %>
+</div>

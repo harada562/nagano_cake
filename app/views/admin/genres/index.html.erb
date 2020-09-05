@@ -1,0 +1,39 @@
+<%= render 'layouts/amin_header' %>
+<h1>ジャンル一覧・追加</h1>
+<%= form_for(@genre, url: admin_genres_path) do |f| %>
+	<h2>ジャンル</h2>
+	<%= f.text_field :name%>
+	<h2>販売ステータス</h2>
+	<div class="is_active customer_edit_radio">
+	<h3>有効</h3>
+	 <%= f.radio_button :is_active, [false] %>
+	 <h3>無効</h3>
+	 <%= f.radio_button :is_active, [true] %>
+	</div>
+<div>
+	<%= f.submit "追加" ,class: "btn btn-info genres_index"%>
+</div>
+<% end %>
+
+<table class="table genres_table">
+	<tr>
+		<th>ジャンル</th>
+		<th>状態</th>
+		<th></th>
+	</tr>
+	<tr>
+		<% @genres.each do |i|%>
+			<td><%= i.name %></td>
+			 <td>
+				 <% if  i.is_active == false %>
+				 	有効
+				 <% else %>
+				 	無効
+				 <% end %>
+			 </td>
+			<td>
+				<%= link_to "編集",edit_admin_genre_path(i.id), class: "btn btn-info" %>
+			</td>
+	</tr>
+		<% end %>
+</table>

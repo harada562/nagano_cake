@@ -1,0 +1,25 @@
+<%= render 'layouts/customer_header' %>
+<h1>注文履歴</h1>
+<table class="table">
+	<tr>
+		<th>注文日</th>
+		<th>配送先</th>
+		<th>注文商品</th>
+		<th>支払い金額</th>
+		<th>ステータス</th>
+		<th>注文詳細</th>
+	</tr>
+	<tr>
+		<% @orders.each do |order|%>
+			<td><%= order.created_at.to_s(:public_datetime_jp)%></td>
+			<td><%= order.postal_code%> <br> <%=order.address%> <br><%=order.name%></td>
+			<td><% order.order_details.each do |order_item| %>
+      			<%= order_item.item.name %><br>
+      		<% end %>
+      		</td>
+			<td><%= order.total_payment%>円</td>
+			<td><%= order.status%></td>
+			<td><%= link_to '表示する', public_order_path(order.id)%></td>
+	</tr>
+		<% end %>
+</table>
