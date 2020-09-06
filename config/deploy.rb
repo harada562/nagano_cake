@@ -1,9 +1,9 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1"
 
-set :application, "nagano"
-set :repo_url, "git@github.com:isshn/nagano.git"
-set :deploy_to, "/home/ec2-user/nagano"
+set :application, "nagano_cake"
+set :repo_url, "git@github.com:isshn/nagano_cake.git"
+set :deploy_to, "/home/ec2-user/nagano_cake"
 set :rbenv_ruby, '2.5.7'
 set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "public", "tmp"
