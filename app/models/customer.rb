@@ -18,7 +18,8 @@ class Customer < ApplicationRecord
   validates :postal_code, numericality: true, presence: true
   validates :telephone_number, numericality: true, presence: true
 # 6文字以下NG
-  validates :encrypted_password, length: { minimum: 6 } 
+  validates :encrypted_password, length: { minimum: 6 }
+  # 退会済みならログイン不可
   def active_for_authentication?
     super && (self.is_deleted == false)
   end

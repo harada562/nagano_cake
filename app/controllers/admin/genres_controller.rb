@@ -13,7 +13,6 @@ class Admin::GenresController < ApplicationController
 		@genre = Genre.new(genre_params)
 		# 入力されたデータをsaveメソッドで、DBに保存する
 		@genre.save
-		
 		redirect_to admin_genres_path
 	end
 
@@ -25,7 +24,6 @@ class Admin::GenresController < ApplicationController
 		@genre = Genre.find(params[:id])
 		@genre.update(genre_params)
         redirect_to admin_genres_path
-
 	end
 
 	private

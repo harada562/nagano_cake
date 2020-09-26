@@ -21,6 +21,7 @@ class Public::CustomersController < ApplicationController
 	def hide
         @customer = Customer.find(params[:id])
         #is_deletedカラムにフラグを立てる(defaultはfalse)
+        binding.pry
         @customer.update(is_deleted: true)
         #ログアウトさせる
         reset_session
